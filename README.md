@@ -1,4 +1,4 @@
 possible causes of the 'conda' error:
-1. https://www.google.com/search?q=vscode+how+to+check+current+interpreter&oq=vscode+how+to+check+current+interpreter&aqs=chrome..69i57j33i160l2.7103j0j7&sourceid=chrome&ie=UTF-8#kpvalbx=_OHYIZIilJr2n2roPovOaoAU_47
+1. https://www.youtube.com/watch?v=btjcIAyMNmc&embeds_euri=https%3A%2F%2Fwww.google.com%2F&feature=emb_logo&ab_channel=GhostTogether
 
 2. the version of python in virtual env. is different from the one installed locally?
