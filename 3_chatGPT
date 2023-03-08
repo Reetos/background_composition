@@ -1,0 +1,20 @@
+from moviepy.editor import *
+from moviepy.video.tools.drawing import mask_color
+
+# Load the video clip with the green screen background
+video = VideoFileClip("sofa-11294.mp4")
+
+# Load the background image
+background = ImageClip("sunset-g9d1b19c70_1920.jpg").set_duration(video.duration)
+
+# Define the green screen color
+green = (76, 118, 54)
+
+# Create a mask that extracts the green screen
+mask = video.fl_image(lambda frame: mask_color(frame, green, thr=40))
+
+# Composite the green screen with the new background image
+final = CompositeVideoClip([background, mask.set_position("center")])
+
+# Write the output video file
+final.write_videofile("output_video.mp4")
