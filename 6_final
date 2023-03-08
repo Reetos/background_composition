@@ -30,4 +30,18 @@ mask = video.fl_image(create_mask)
 final = CompositeVideoClip([background, mask.set_position("center")])
 
 # Write the output video file
-final.write_videofile("output_video_6_2.mp4")
+final.write_videofile("output_video.mp4")
+
+#--------------------------------------------------------------------------------
+background_Image = cv2.imread("bgImage.jpg")
+background_Image = cv2.cvtColor(background_Image, cv2.COLOR_BGR2RGB)
+
+# Note: the baground image may not as the same size as frist image
+# so we run cv2.resize to ensure that those image are in the same size
+background_Image = cv2.resize(background_Image, (marvel_image.shape[1], marvel_image.shape[0]) )
+# set the mask area with black to be replaced with Thor Image
+background_Image[mask == 0 ] = [0, 0, 0]
+
+complete_image = background_Image + marvel_image
+
+plt.imshow(complete_image)
