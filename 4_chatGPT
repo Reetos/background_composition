@@ -21,24 +21,24 @@ def create_mask(frame):
     # Create a mask that extracts the green screen
     mask = cv2.inRange(hsv, lower_green, upper_green)
     
-    # Convert the mask to RGBA color space with transparency
+    # Dilate the mask to fill in any holes
+    kernel = np.ones((5,5),np.uint8)
+    mask = cv2.dilate(mask,kernel,iterations = 1)
+    # Invert the mask to extract the object instead of the green screen
+    mask = cv2.bitwise_not(mask)
+    # Convert the mask to RGB color space
+    mask_rgb = cv2.cvtColor(mask, cv2.COLOR_GRAY2RGB)
+    return mask_rgb
+
+    '''# Convert the mask to RGBA color space with transparency
     mask_rgba = cv2.cvtColor(mask, cv2.COLOR_GRAY2RGBA)
     # Set the green screen pixels to transparent
     mask_rgba[:, :, 3] = np.where(mask == 0, 0, 255)
     mask_rgb = cv2.cvtColor(mask_rgba, cv2.COLOR_RGBA2RGB)
 
-    return mask_rgb
-    
-    '''# Invert the mask
-    mask = cv2.bitwise_not(mask)
-
-    # Apply the mask to the original frame to preserve color values
-    res = cv2.bitwise_and(frame, frame, mask=mask)
-    return res'''
-
-    '''# Convert the mask to RGB color space
-    mask_rgb = cv2.cvtColor(mask, cv2.COLOR_GRAY2RGB)
     return mask_rgb'''
+    
+
 
 mask = video.fl_image(create_mask)
 
