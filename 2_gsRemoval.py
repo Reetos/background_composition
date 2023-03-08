@@ -1,7 +1,7 @@
 import cv2
 
-video = cv2.VideoCapture("sofa-11294.mp4")
-image = cv2.imread("sunset-g9d1b19c70_1920.jpg")
+video = cv2.VideoCapture("sofa.mp4")
+image = cv2.imread("sunset.jpg")
 
 cv2.namedWindow("Trackbars")
 cv2.resizedWindow("rackbars", 300, 300)

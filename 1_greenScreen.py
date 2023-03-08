@@ -1,16 +1,16 @@
 import cv2
 import numpy as np
 
-video = cv2.VideoCapture("sofa-11294.mp4")
-image = cv2.imread("sunset-g9d1b19c70_1920.jpg")
+video = cv2.VideoCapture("sofa.mp4")
+image = cv2.imread("sunset.jpg")
 
 while True:
 
     ret, frame = video.read()
     #print(f'frame size: {frame.shape}')
 
-    frame = cv2.resize(frame, (1920, 1080))
-    image = cv2.resize(image, (1920, 1080))
+    frame = cv2.resize(frame, (640, 480))
+    image = cv2.resize(image, (640, 480))
 
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
@@ -29,5 +29,5 @@ while True:
     if cv2.waitKey(5) == 27:
         break
 
-#video.release()
+video.release()
 cv2.destroyAllWindows()
