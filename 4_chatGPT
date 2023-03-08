@@ -25,7 +25,9 @@ def create_mask(frame):
     mask_rgba = cv2.cvtColor(mask, cv2.COLOR_GRAY2RGBA)
     # Set the green screen pixels to transparent
     mask_rgba[:, :, 3] = np.where(mask == 0, 0, 255)
-    return mask_rgba
+    mask_rgb = cv2.cvtColor(mask_rgba, cv2.COLOR_RGBA2RGB)
+
+    return mask_rgb
     
     '''# Invert the mask
     mask = cv2.bitwise_not(mask)
