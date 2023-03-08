@@ -23,9 +23,9 @@ def create_mask(frame):
     # Invert the mask
     mask = cv2.bitwise_not(mask)
 
-    # Convert the mask to RGB color space
-    mask_rgb = cv2.cvtColor(mask, cv2.COLOR_GRAY2RGB)
-    return mask_rgb
+    # Apply the mask to the original frame to preserve color values
+    res = cv2.bitwise_and(frame, frame, mask=mask)
+    return res
 
 mask = video.fl_image(create_mask)
 
