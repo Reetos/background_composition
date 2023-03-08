@@ -21,13 +21,25 @@ def create_mask(frame):
     # Create a mask that extracts the green screen
     mask = cv2.inRange(hsv, lower_green, upper_green)
     # Convert the mask to RGB color space
-    mask_rgb = cv2.cvtColor(mask, cv2.COLOR_GRAY2RGB)
-    return mask_rgb
+    res = cv2.bitwise_and(frame, frame, mask = mask)
 
-mask = video.fl_image(create_mask)
+    f = frame - res
+    f = np.where(f==0, image, f)
+    
+    cv2.imshow('video', frame)
+    cv2.imshow('mask', f)
+
+    if cv2.waitKey(25) == 27:
+        break
+
+video.release()
+cv2.destroyAllWindows()
+
+
+'''mask = video.fl_image(create_mask)
 
 # Composite the green screen with the new background image
-final = CompositeVideoClip([background, mask.set_position("center")])
+final = CompositeVideoClip([background, mask.set_position("center")])'''
 
 # Write the output video file
-final.write_videofile("output_video_6_2.mp4")
+final.write_videofile("output_video_6_3.mp4")

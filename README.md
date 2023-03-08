@@ -12,3 +12,4 @@ Tools:
 .Color picker:
 https://www.oh-benri-tools.com/tools/color/hsl-hsv-color-picker
 
+6_final: https://www.geeksforgeeks.org/replace-green-screen-using-opencv-python/
