@@ -20,7 +20,18 @@ def create_mask(frame):
     upper_green = np.array([70, 255, 255])
     # Create a mask that extracts the green screen
     mask = cv2.inRange(hsv, lower_green, upper_green)
+<<<<<<< HEAD
     # Invert the mask
+=======
+    
+    # Convert the mask to RGBA color space with transparency
+    mask_rgba = cv2.cvtColor(mask, cv2.COLOR_GRAY2RGBA)
+    # Set the green screen pixels to transparent
+    mask_rgba[:, :, 3] = np.where(mask == 0, 0, 255)
+    return mask_rgba
+    
+    '''# Invert the mask
+>>>>>>> parent of 91aece9 (4-4)
     mask = cv2.bitwise_not(mask)
 
     # Apply the mask to the original frame to preserve color values
