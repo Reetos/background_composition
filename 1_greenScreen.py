@@ -9,12 +9,13 @@ while True:
     ret, frame = video.read()
     #print(f'frame size: {frame.shape}')
 
+    frame = cv2.resize(frame, (1920, 1080))
     image = cv2.resize(image, (1920, 1080))
 
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
-    u_green = np.array([104, 153, 70])
-    l_green = np.array([30,30,0])
+    u_green = np.array([29, 46, 26])
+    l_green = np.array([74, 121, 49])
 
     mask = cv2.inRange(frame, l_green, u_green)
     res = cv2.bitwise_and(frame, frame, mask=mask)
@@ -25,8 +26,8 @@ while True:
     cv2.imshow("video", frame)
     cv2.imshow("mask", f)
 
-    if cv2.waitKey(25) == 27:
+    if cv2.waitKey(5) == 27:
         break
 
-video.release()
+#video.release()
 cv2.destroyAllWindows()

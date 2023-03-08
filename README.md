@@ -8,4 +8,7 @@ Errors occurred:
 1. "no module called 'cv2'"
     solution: pip install --upgrade pip> pip install opencv-python
 
-    
+Tools:
+.Color picker:
+https://www.oh-benri-tools.com/tools/color/hsl-hsv-color-picker
+
