@@ -3,10 +3,10 @@ from moviepy.editor import *
 import numpy as np
 
 # Load the video clip with the green screen background
-video = VideoFileClip("sofa-11294.mp4")
+video = VideoFileClip("sofa.mp4")
 
 # Load the background image
-background = ImageClip("sunset-g9d1b19c70_1920.jpg").set_duration(video.duration)
+background = ImageClip("sunset.jpg").set_duration(video.duration)
 
 # Define the green screen color
 green = (76, 118, 54)

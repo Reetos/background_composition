@@ -2,9 +2,16 @@
 
 import cv2 
 import numpy as np 
+from moviepy.editor import *
+
   
-video = cv2.VideoCapture("sofa.mp4")
-image = cv2.imread("sunset.jpg")
+#video = cv2.VideoCapture("sofa.mp4")
+video = VideoFileClip("sofa.mp4")
+#image = cv2.imread("sunset.jpg")
+background = ImageClip("sunset.jpg").set_duration(video.duration)
+
+green = (76, 118, 54)
+
   
 while True:
   

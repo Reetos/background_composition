@@ -33,7 +33,7 @@ final = CompositeVideoClip([background, mask.set_position("center")])
 final.write_videofile("output_video.mp4")
 
 #--------------------------------------------------------------------------------
-background_Image = cv2.imread("bgImage.jpg")
+'''background_Image = cv2.imread("bgImage.jpg")
 background_Image = cv2.cvtColor(background_Image, cv2.COLOR_BGR2RGB)
 
 # Note: the baground image may not as the same size as frist image
@@ -44,4 +44,4 @@ background_Image[mask == 0 ] = [0, 0, 0]
 
 complete_image = background_Image + marvel_image
 
-plt.imshow(complete_image)
+plt.imshow(complete_image)'''
